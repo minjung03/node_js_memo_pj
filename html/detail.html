@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title><%= data.name %>의 메모장 </title>
+    </head>
+    <body>
+        <table border="1">
+            <tr>
+                <th>제목</th>
+                <th>날짜</th>
+                <th>내용</th>
+                <th>기타</th>
+            </tr>
+
+            <% data.forEach(function (item, index){ %>
+            <tr> <!-- 반목문으로 돌릴 것 -->
+                <td><%= item.title  %></td>
+                <td><%= item.date  %> </td>
+                <td><%= item.content  %> </td>
+                <td><a href='/delete/<%= item.post_num  %>'>삭제</a>
+                    <a href='/update/<%= item.post_num  %>'>수정</a>
+                </td>
+            </tr>
+            <% }); %>      
+
+        </table>
+    </body>
+</html>

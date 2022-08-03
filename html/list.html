@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title><%= data.name %>의 메모장 </title>
+    </head>
+    <body>
+        <table border="1">
+            <tr>
+                <th>제목</th>
+                <th>날짜</th>
+            </tr>
+
+            <% data.forEach(function (item, index){ %>
+            <tr> <!-- 반목문으로 돌릴 것 -->
+                <td><a href="/detail/<%= item.post_num  %>"><%= item.title  %></a></td>
+                <td><%= item.date  %> </td>
+            </tr>
+            <% }); %>      
+
+        </table>
+        <br/>
+        <a href="/add">추가</a>
+    </body>
+</html>
