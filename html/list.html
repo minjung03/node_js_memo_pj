@@ -11,26 +11,29 @@
                 
                 <div id="div-etc">
                     <p id="page_title">나의 메모 리스트&nbsp;|&nbsp;</p> 
-                    <a href="/" id="home"><span>&nbsp;HOME</span></a> 
+                    <!--<a href="/" id="home"><span>&nbsp;HOME</span></a>-->
+                    <a href="/logout" id="logout"><span>&nbsp;Logout</span></a>
                     <a href="/add" id="add"><img src="/style/add_icon.png" width="23px"/></a> 
                 </div>
                 
-                <table>
-                    <tr class="label">
-                        <td class="date">날짜</td>
-                        <td class="title">제목</td>
-                        <td class="writer">작성자</td>
-                    </tr>
+                <div class="div_tbl">
+                    <table>
+                        <tr class="label">
+                            <td class="date">날짜</td>
+                            <td class="title">제목</td>
+                            <td class="writer">작성자</td>
+                        </tr>
 
-                    <% data.forEach(function (item, index){ %>
-                    <tr onclick="location.href='/detail/<%= item.post_num  %>'"> <!-- 반목문으로 돌릴 것 -->
-                        <td class="date"><%= item.date  %></td>
-                        <td class="title"><%= item.title  %></td>
-                        <td class="writer"><%= name  %> </td>
-                    </tr>
-                    <% }); %>      
+                        <% data.forEach(function (item, index){ %>
+                        <tr onclick="location.href='/detail/<%= item.post_num  %>'"> <!-- 반목문으로 돌릴 것 -->
+                            <td class="date"><%= item.date  %></td>
+                            <td class="title"><%= item.title  %></td>
+                            <td class="writer"><%= name  %> </td>
+                        </tr>
+                        <% }); %>      
 
-                </table>
+                    </table>
+                </div>
             </div>
         </div>
     </body>

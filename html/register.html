@@ -9,7 +9,7 @@
 
         <div class="outer-div">
             <div class="inner-div">
-                <form method="post" accept="/register">
+                <form method="post" action="/register">
                     <table>
                         <tr>
                             <td id="img_td">
@@ -26,7 +26,7 @@
                             <td id="label">비밀번호</td>
                         </tr>
                         <tr> 
-                            <td><input type="text" name="pass" required/></td>
+                            <td><input type="password" name="pass" required/></td>
                         </tr>
                         <tr>
                             <td id="label">이름</td>
@@ -40,6 +40,11 @@
                     </table>
                     <br/>
                 </form>
+
+                <div id="div-login">
+                    <span>이미 회원이신가요?&nbsp;&nbsp;</span><a href="/">로그인</a>
+                </div>
+
             </div>
         </div>
     </body>

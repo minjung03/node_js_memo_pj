@@ -40,11 +40,10 @@ body {
     display: flex;
     align-items: center;
 }
-#home {
+#logout {
     margin-top: 5px;
     padding-bottom: 5px;
-    padding-right: 10px;
-    padding-right: 510px;
+    margin-right: 500px;
 }
 a{
     color: #a0a0a0;
@@ -55,6 +54,32 @@ a{
 #page_title{
     font-family: 'Pretendard-Regular';
     color: #6d6d6d;
+}
+.div_tbl{
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 700px;
+    margin-left:auto; 
+    margin-right:auto;
+    height: 400px;
+}
+/* 스크롤바 설정*/
+.div_tbl::-webkit-scrollbar{
+    width: 6px;
+    height: 5px;
+}
+/* 스크롤바 막대 설정*/
+.div_tbl::-webkit-scrollbar-thumb{
+    height: 17%;
+    background-color: #a2adfd;
+    /* 스크롤바 둥글게 설정    */
+    border-radius: 10px;    
+}
+/* 스크롤바 뒷 배경 설정*/
+.div_tbl::-webkit-scrollbar-track{
+    background-color: rgb(224, 224, 224);
+    border-radius: 10px;  
+    margin-top: 7px;
 }
 
 table{
