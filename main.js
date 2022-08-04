@@ -9,6 +9,7 @@ var bodyParser = require('body-parser');
 // 모듈 추출
 var mysql = require('mysql'); 
 
+
 // express 서버 실행
 var app = express();
 app.set('port', process.env.PORT || 4444);
@@ -26,7 +27,7 @@ var client = mysql.createConnection({
 });
 
 // 서버 실행
-app.listen(4444, function(){
+app.listen(app.get('port'), function(){
     console.log('server running at http//127.0.0.1:4444...')
 });
 
@@ -76,10 +77,15 @@ app.post('/login', function(req, res){
             }            
             else if(results[i].id == parmId && results[i].pass == parmPass) {
                 userId = parmId;
+                let userName = '';
+                client.query('select * from user where id = ?;', parmId, function(err, result){
+                    userName = result[0].name;
+                });
                 fs.readFile('html/list.html', 'utf8', function(error, data){
                     client.query('select * from memo where id = ?',parmId, function(err, result){
                         res.send(ejs.render(data, {
-                            data : result
+                            data : result,
+                            name: userName,
                         })); 
                     });
                 });
