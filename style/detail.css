@@ -1,0 +1,92 @@
+@font-face {
+    font-family: 'EarlyFontDiary';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_220508@1.0/EarlyFontDiary.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+body {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    font-family: 'EarlyFontDiary';
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.outer-div {
+    margin-top: 90px;
+    text-align: center;
+    padding: 30px;
+}
+.inner-div {
+    background-color: white;
+    width: 1000px;
+    height: 650px;
+    display: inline-block;
+}
+
+h5 {
+    font-family: 'Pretendard-Regular';
+    padding-left: 30px;
+    width: 1000px;
+    text-align: left;
+}
+h5 a{
+    font-size: 14px;
+    font-weight: 100;
+    text-decoration: none;
+    color: rgb(168, 168, 168);
+}
+
+
+table {
+    text-align: left;
+    width: 1000px;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    padding-right: 100px;
+    padding-left: 100px;
+    background-color: white;
+}
+#title{
+    font-weight: bold;
+    font-size: 30px;
+    padding-bottom: 5px;
+}
+#date {
+    padding-top: 5px;
+    height: 10px;
+    padding-bottom: 15px;
+}
+#content {
+    vertical-align: top;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #f0f0f0;
+    font-size: 20px;
+    height: 250px;
+}
+#etc {
+    padding-top: 20px;
+    font-size: 15px;
+    height: 10px;
+    text-align: right;
+}
+
+#etc a{
+    text-decoration: none;
+    font-family: 'Pretendard-Regular';
+    background-color: #92bcff;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 15px;
+    padding-left: 15px;
+    border-radius: 10px;
+    color: white;
+}

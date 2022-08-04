@@ -26,7 +26,7 @@ var client = mysql.createConnection({
 });
 
 // 서버 실행
-app.listen(4444, function(){
+app.listen(app.get('port'), function(){
     console.log('server running at http//127.0.0.1:4444...')
 });
 
@@ -34,6 +34,7 @@ app.use('/style', express.static(__dirname+'/style'));
 
 // 사용자 id 저장 변수
 var userId;
+var userName;
 
 
 // ----------------------시작 / 로그인&회원가입----------------------
@@ -76,10 +77,16 @@ app.post('/login', function(req, res){
             }            
             else if(results[i].id == parmId && results[i].pass == parmPass) {
                 userId = parmId;
+
+                client.query('select * from user where id = ?;', parmId, function(err, result){
+                    userName = result[0].name;
+                });
+
                 fs.readFile('html/list.html', 'utf8', function(error, data){
                     client.query('select * from memo where id = ?',parmId, function(err, result){
                         res.send(ejs.render(data, {
-                            data : result
+                            data : result,
+                            name : userName
                         })); 
                     });
                 });
@@ -89,12 +96,25 @@ app.post('/login', function(req, res){
     });    
 });
 
+// ----------------------메모 목록----------------------
+app.get('/list', function(req, res){
+    fs.readFile('html/list.html', 'utf8', function(error, data){
+        client.query('select * from memo where id = ?', userId, function(err, result){
+            res.send(ejs.render(data, {
+                data : result,
+                name : userName
+            })); 
+        });
+    });
+});
+
 // ----------------------메모 상세----------------------
 app.get('/detail/:num', function(req, res){ 
     fs.readFile('html/detail.html', 'utf8', function(error, data){
         client.query('select * from memo where post_num = ?', [req.params.num] , function(err, result){
             res.send(ejs.render(data, {
-                data : result
+                data : result,
+                name : userName
             })); 
         });
     });
@@ -129,7 +149,8 @@ app.get('/update/:num', function(req, res){
     fs.readFile('html/update.html', 'utf8', function(error, data){
         client.query('select * from memo where post_num = ?', [req.params.num], function(err, result){
             res.send(ejs.render(data, {
-                data : result[0]
+                data : result[0],
+                name : userName
             })); 
         });
     });
@@ -138,6 +159,6 @@ app.post('/update/:num', function(req, res){
     var body = req.body;
     client.query('update memo set title=?, date=?, content=? where post_num=?',
     [body.title, body.date, body.content, req.params.num], function(){
-        res.redirect('/');
+        res.redirect("/detail/"+[req.params.num]);
     });
 });
