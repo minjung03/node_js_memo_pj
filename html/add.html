@@ -2,28 +2,34 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>나만의 메모장</title>
+        <title><%= name %>의 메모장</title>
+        <link href="/style/add.css" rel="stylesheet">
     </head>
     <body>
-        <h1>메모 추가</h1>
 
-        <form method="post" accept="/add">
-            <table border="1">
-                <tr>
-                    <td>제목</td>
-                    <td><input type="text" name="title"/></td>
-                </tr>
-                <tr> 
-                    <td>작성 날짜</td>
-                    <td><input type="date" name="date"/></td>
-                </tr>   
-                <tr>
-                    <td>내용</td>
-                    <td><textarea name="content"></textarea></td>
-                </tr>
-            </table>
-            <br/>
-            <input type="submit" value="작성 완료">
-        </form>
+        <div class="outer-div">
+            <div class="inner-div">
+                <h5><a href="/list">< 돌아가기</a></h5>
+                <form method="post" action="/add">
+                    <table>
+                        <tr>
+                            <td id="title"><input type="text" name="title" placeholder="제목"/></td>
+                        </tr>
+                        <tr> 
+                            <td id="date"><input type="date" name="date" id="currentDate" readonly/></td>
+                            <script>
+                                document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);
+                            </script>
+                        </tr>   
+                        <tr>
+                            <td id="content"><textarea name="content" placeholder="내용을 적어주세요 :)"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td id="etc"><button type="submit">작성 완료</button></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
     </body>
 </html>

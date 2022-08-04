@@ -15,7 +15,10 @@
                             <td id="title"><input type="text" name="title" value="<%= data.title %> "/></td>
                         </tr>
                         <tr> 
-                            <td id="date"><input type="date" name="date" value="<%= data.date %>"/></td>
+                            <td id="date"><input type="date" name="date" id="currentDate" readonly/></td>
+                            <script>
+                                document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);
+                            </script>
                         </tr>   
                         <tr>
                             <td id="content"><textarea name="content"><%= data.content %></textarea></td>

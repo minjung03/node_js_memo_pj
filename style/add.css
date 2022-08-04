@@ -44,7 +44,6 @@ h5 a{
     color: rgb(168, 168, 168);
 }
 
-
 table {
     text-align: left;
     width: 1000px;
@@ -54,14 +53,16 @@ table {
     padding-left: 100px;
     background-color: white;
 }
-#title{
+#title input{
     font-weight: bold;
     font-size: 30px;
     padding-bottom: 5px;
 }
-#date {
+#date input{
+    outline: none;
     padding-top: 5px;
     height: 10px;
+    font-size: 15px;
     padding-bottom: 15px;
 }
 #content {
@@ -69,8 +70,7 @@ table {
     padding: 20px;
     border-radius: 20px;
     background-color: #f0f0f0;
-    font-size: 15px;
-    height: 250px;
+    border: none;
 }
 #etc {
     padding-top: 20px;
@@ -79,14 +79,37 @@ table {
     text-align: right;
 }
 
-#etc a{
-    text-decoration: none;
+input {
+    font-family: 'EarlyFontDiary';
+    border: 0;
+    width: 790px;
+    outline: none;
+}
+#currentDate{
+    outline: none;
+}
+textarea {
+    font-family: 'EarlyFontDiary';
+    resize: none;
+    width: 100%;
+    height: 240px;
+    font-size: 15px;
+    font-weight: 300;
+    background-color: #00000000;
+    border: none;
+    outline: none;
+}
+
+button {
+    border: 0;   
+    font-size: 15px;
     font-family: 'Pretendard-Regular';
-    background-color: #92bcff;
     padding-top: 5px;
     padding-bottom: 5px;
     padding-right: 15px;
     padding-left: 15px;
     border-radius: 10px;
     color: white;
+    background-color: #92bcff;
+    text-align: right;
 }

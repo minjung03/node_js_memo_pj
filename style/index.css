@@ -18,7 +18,44 @@ body {
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); 
     background-repeat: no-repeat;
     background-attachment: fixed;
+
+    background-size: 800% 800%;
+    -webkit-animation: AnimationName 50s ease infinite;
+    -moz-animation: AnimationName 50s ease infinite;
+    -o-animation: AnimationName 50s ease infinite;
+    animation: AnimationName 50s ease infinite;
+  
+    background: linear-gradient(-45deg, #c8d7f0, #f5f7fa, #3cbdec, #7dffe1);
+    background-size: 400% 400%;
+    animation: AnimationName 25s ease infinite;
+    width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
 }
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-o-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes AnimationName { 
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
 .outer-div {
     margin-top: 90px;
     text-align: center;
@@ -41,6 +78,7 @@ table{
     text-align: left;
     padding-bottom: 10px;
 }
+input:focus {outline: none;}
 input {
     margin-bottom: 15px;
     background-color: #dce6f5;

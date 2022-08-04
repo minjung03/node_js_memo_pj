@@ -81,17 +81,12 @@ app.post('/login', function(req, res){
                 client.query('select * from user where id = ?;', parmId, function(err, result){
                     userName = result[0].name;
                 });
-                let userName = '';
-                client.query('select * from user where id = ?;', parmId, function(err, result){
-                    userName = result[0].name;
-                });
 
                 fs.readFile('html/list.html', 'utf8', function(error, data){
                     client.query('select * from memo where id = ?',parmId, function(err, result){
                         res.send(ejs.render(data, {
                             data : result,
                             name: userName,
-
                         })); 
                     });
                 });
@@ -129,7 +124,9 @@ app.get('/detail/:num', function(req, res){
 // ----------------------메모 저장----------------------
 app.get('/add', function(req, res){ 
     fs.readFile('html/add.html', 'utf8', function(error, data){
-       res.send(data);
+        res.send(ejs.render(data, {
+            name : userName
+        })); 
     });
 });
 app.post('/add', function(req, res){ 

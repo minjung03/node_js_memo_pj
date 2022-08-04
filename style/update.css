@@ -54,9 +54,11 @@ table {
     background-color: white;
 }
 #title input{
+    width: 770px;
     font-weight: bold;
     font-size: 30px;
     padding-bottom: 5px;
+    outline: none;
 }
 #date input{
     padding-top: 5px;
@@ -81,13 +83,15 @@ table {
 input {
     font-family: 'EarlyFontDiary';
     border: 0;
+    outline: none;
 }
 textarea {
     font-family: 'EarlyFontDiary';
     resize: none;
     width: 100%;
     height: 240px;
-    font-size: 20px;
+    outline: none;
+    font-size: 15px;
     background-color: #00000000;
     border: none;
 }
