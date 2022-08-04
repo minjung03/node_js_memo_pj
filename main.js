@@ -78,27 +78,20 @@ app.post('/login', function(req, res){
             }            
             else if(results[i].id == parmId && results[i].pass == parmPass) {
                 userId = parmId;
-<<<<<<< HEAD
-
                 client.query('select * from user where id = ?;', parmId, function(err, result){
                     userName = result[0].name;
                 });
-
-=======
                 let userName = '';
                 client.query('select * from user where id = ?;', parmId, function(err, result){
                     userName = result[0].name;
                 });
->>>>>>> 2c4f826706ebbdd3a4fb3798452f9765b6dde981
+
                 fs.readFile('html/list.html', 'utf8', function(error, data){
                     client.query('select * from memo where id = ?',parmId, function(err, result){
                         res.send(ejs.render(data, {
                             data : result,
-<<<<<<< HEAD
-                            name : userName
-=======
                             name: userName,
->>>>>>> 2c4f826706ebbdd3a4fb3798452f9765b6dde981
+
                         })); 
                     });
                 });
