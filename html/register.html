@@ -3,27 +3,44 @@
     <head>
         <meta charset="utf-8">
         <title>나만의 메모장</title>
+        <link href="/style/register.css" rel="stylesheet">
     </head>
     <body>
-        <h1>회원가입</h1>
 
-        <form method="post" accept="/register">
-            <table border="1">
-                <tr>
-                    <td>ID</td>
-                    <td><input type="text" name="id"/></td>
-                </tr>
-                <tr> 
-                    <td>PASS</td>
-                    <td><input type="text" name="pass"/></td>
-                </tr>   
-                <tr>
-                    <td>NAME</td>
-                    <td><input type="text" name="name"/></td>
-                </tr>
-            </table>
-            <br/>
-            <input type="submit" value="회원 가입">
-        </form>
+        <div class="outer-div">
+            <div class="inner-div">
+                <form method="post" accept="/register">
+                    <table>
+                        <tr>
+                            <td id="img_td">
+                                <img src="/style/memo_icon.png" width="150">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="label">아이디</td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="id"/></td>
+                        </tr>
+                        <tr>
+                            <td id="label">비밀번호</td>
+                        </tr>
+                        <tr> 
+                            <td><input type="text" name="pass"/></td>
+                        </tr>
+                        <tr>
+                            <td id="label">이름</td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="name"/></td>
+                        </tr>  
+                        <tr>
+                            <td><button type="submit">회원가입</button></td>
+                        </tr>
+                    </table>
+                    <br/>
+                </form>
+            </div>
+        </div>
     </body>
 </html>

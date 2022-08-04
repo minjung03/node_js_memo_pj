@@ -30,6 +30,8 @@ app.listen(4444, function(){
     console.log('server running at http//127.0.0.1:4444...')
 });
 
+app.use('/style', express.static(__dirname+'/style'));
+
 // 사용자 id 저장 변수
 var userId;
 
