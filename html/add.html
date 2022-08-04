@@ -13,7 +13,7 @@
                 <form method="post" action="/add">
                     <table>
                         <tr>
-                            <td id="title"><input type="text" name="title" placeholder="제목"/></td>
+                            <td id="title"><input type="text" name="title" placeholder="제목" required/></td>
                         </tr>
                         <tr> 
                             <td id="date"><input type="date" name="date" id="currentDate" readonly/></td>
@@ -22,7 +22,7 @@
                             </script>
                         </tr>   
                         <tr>
-                            <td id="content"><textarea name="content" placeholder="내용을 적어주세요 :)"></textarea></td>
+                            <td id="content"><textarea name="content" placeholder="내용을 적어주세요 :)" required></textarea></td>
                         </tr>
                         <tr>
                             <td id="etc"><button type="submit">작성 완료</button></td>

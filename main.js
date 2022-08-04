@@ -14,6 +14,8 @@ var mysql = require('mysql');
 var app = express();
 app.set('port', process.env.PORT || 4444);
 
+app.use(express.static(`${__dirname}/static`)); // static 있는 것을 정적 경로로...
+
 app.use(bodyParser.urlencoded({
     extended : false
 }));
@@ -82,14 +84,7 @@ app.post('/login', function(req, res){
                     userName = result[0].name;
                 });
 
-                fs.readFile('html/list.html', 'utf8', function(error, data){
-                    client.query('select * from memo where id = ?',parmId, function(err, result){
-                        res.send(ejs.render(data, {
-                            data : result,
-                            name: userName,
-                        })); 
-                    });
-                });
+                res.redirect('/list');
                 return;
             }
         }
@@ -136,13 +131,14 @@ app.post('/add', function(req, res){
     client.query('insert into memo(title, date, content, id) values (?,?,?,?)',
     [body.title, body.date, body.content, userId], function(){
         console.log('--------데이터가 추가되었습니다.');
+        res.redirect('/list');
     });
 });
 
 // ----------------------메모 삭제----------------------
 app.get('/delete/:num', function(req, res){
     client.query('delete from memo where post_num=?', [req.params.num], function(){
-        res.redirect('/');
+        res.redirect("/list");
     });
 });
 
