@@ -49,9 +49,14 @@ app.use(expressSession({
 
 // ----------------------시작(로그인) 화면----------------------
 app.get('/', function(req, res){ 
-    fs.readFile('index.html', 'utf8', function(error, data){
-       res.send(data);
-    });
+    if(req.session.user){
+        console.log('세션 존재함');
+        res.redirect('/list');
+    }else{
+        fs.readFile('index.html', 'utf8', function(error, data){
+        res.send(data);
+        });
+    }
 });
 
 // ----------------------회원 가입----------------------
@@ -73,34 +78,27 @@ app.post('/login', function(req, res){
     var parmId = req.body.id; 
     var parmPass = req.body.pass;
     console.log('요청 파라미터 : '+parmId+', '+parmPass);
-
-    if(req.session.user){
-        console.log('세션 존재함');
-        res.redirect('/list');
-    }
-    else {
-        client.query('select * from user', function(err, results){
-            for (var i = 0; i <= results.length; i++) {
-                if(i == results.length){
-                    res.send('<script type="text/javascript">alert("아이디 혹은 비밀번호를 잘못입력하셨습니다.");history.go(-1)</script>')
-                    return;
-                }            
-                else if(results[i].id == parmId && results[i].pass == parmPass) {
-                    client.query('select * from user where id = ?;', parmId, function(err, result){
-                        //세션 저장
-                        req.session.user = {
-                            id : parmId,
-                            name : result[0].name
-                        }
-                        userId = req.session.user.id; // 변수에 세션 값 저장
-                        userName = req.session.user.name;
-                        res.redirect('/list');
-                    });
-                    return;
-                }
+    client.query('select * from user', function(err, results){
+        for (var i = 0; i <= results.length; i++) {
+            if(i == results.length){
+                res.send('<script type="text/javascript">alert("아이디 혹은 비밀번호를 잘못입력하셨습니다.");history.go(-1)</script>')
+                return;
+            }            
+            else if(results[i].id == parmId && results[i].pass == parmPass) {
+                client.query('select * from user where id = ?;', parmId, function(err, result){
+                    //세션 저장
+                    req.session.user = {
+                        id : parmId,
+                        name : result[0].name
+                    }
+                    userId = req.session.user.id; // 변수에 세션 값 저장
+                    userName = req.session.user.name;
+                    res.redirect('/list');
+                });
+                return;
             }
-        });    
-    };
+        }
+    });    
 });
 
 // ----------------------로그 아웃----------------------
