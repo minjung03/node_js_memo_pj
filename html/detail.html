@@ -5,8 +5,17 @@
         <title><%= name %>의 메모장 </title>
         <script src="/js/deletememo.js" defer></script>
         <link href="/style/detail.css" rel="stylesheet">
+        <link href="/style/modal.css" rel="stylesheet">
     </head>
+    <div class="modal">
+        <div class="modal_body">
+            <p>정말 삭제하시겠습니까?</p>
+            <div class="modal_ok">확인</div>
+            <div class="modal_no">취소</div>
+        </div>
+    </div>
     <body>
+        
         <div class="outer-div">
             <div class="inner-div">
                 <h5><a href="/list">< 목록으로</a></h5>
@@ -34,5 +43,6 @@
                 </table>
             </div>
         </div>
+        
     </body>
 </html>

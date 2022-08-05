@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 // 데이터베이스와 연결
 var client = mysql.createConnection({
     user: 'root',
-    password: '111111',
+    password: '1234',
     database: 'nodejs'
 });
 
@@ -82,7 +82,12 @@ app.post('/login', function(req, res){
     client.query('select * from user', function(err, results){
         for (var i = 0; i <= results.length; i++) {
             if(i == results.length){
-                res.send('<script type="text/javascript">alert("아이디 혹은 비밀번호를 잘못입력하셨습니다.");history.go(-1)</script>')
+                res.send(`<link href="style/modal.css" rel="stylesheet" /><script src="/js/modal.js" defer></script><div class="modal">
+                <div class="modal_body">
+                    <p>아이디 혹은 비밀번호를 잘못입력하셨습니다.</p>
+                    <div class="modal_ok">확인</div>
+                </div>
+              </div>`);
                 return;
             }            
             else if(results[i].id == parmId && results[i].pass == parmPass) {
@@ -116,7 +121,7 @@ app.get('/list', function(req, res){
     fs.readFile('html/list.html', 'utf8', function(error, data){
         
         if(!req.session.user){
-            res.send('<script type="text/javascript">alert("로그인을 해주세요.");location.href="/"</script>')
+            res.redirect('/html/modal.html');
             // res.redirect('/list');
         }
         else {
@@ -134,7 +139,7 @@ app.get('/list', function(req, res){
 app.get('/detail/:num', function(req, res){ 
     
     if(!req.session.user){
-        res.send('<script type="text/javascript">alert("로그인을 해주세요.");location.href="/"</script>')
+        res.redirect('/html/modal.html');
     }
     else {
         fs.readFile('html/detail.html', 'utf8', function(error, data){
@@ -152,7 +157,7 @@ app.get('/detail/:num', function(req, res){
 // ----------------------메모 저장----------------------
 app.get('/add', function(req, res){ 
     if(!req.session.user){
-        res.send('<script type="text/javascript">alert("로그인을 해주세요.");location.href="/"</script>')
+        res.redirect('/html/modal.html');
     }
     else {
         fs.readFile('html/add.html', 'utf8', function(error, data){
@@ -172,6 +177,7 @@ app.post('/add', function(req, res){
 
 // ----------------------메모 삭제----------------------
 app.get('/delete/:num', function(req, res){
+    console.log('delete');
     client.query('delete from memo where post_num=?', [req.params.num], function(){
         res.redirect("/list");
     });
@@ -181,7 +187,7 @@ app.get('/delete/:num', function(req, res){
 app.get('/update/:num', function(req, res){
     
     if(!req.session.user){
-        res.send('<script type="text/javascript">alert("로그인을 해주세요.");location.href="/"</script>')
+        res.redirect('/html/modal.html');
     }
     else {
         fs.readFile('html/update.html', 'utf8', function(error, data){
