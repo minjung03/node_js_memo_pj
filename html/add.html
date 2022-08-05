@@ -18,7 +18,7 @@
                         <tr> 
                             <td id="date"><input type="date" name="date" id="currentDate" readonly/></td>
                             <script>
-                                document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);
+                                document.getElementById('currentDate').valueAsDate = new Date();
                             </script>
                         </tr>   
                         <tr>

@@ -78,6 +78,7 @@ app.post('/login', function(req, res){
     var parmId = req.body.id; 
     var parmPass = req.body.pass;
     console.log('요청 파라미터 : '+parmId+', '+parmPass);
+    
     client.query('select * from user', function(err, results){
         for (var i = 0; i <= results.length; i++) {
             if(i == results.length){
